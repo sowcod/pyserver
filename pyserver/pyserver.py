@@ -20,6 +20,7 @@ class URLHandler(object) :
         for path in self.paths :
             match = path[1].match(target_path)
             if match is not None :
+                request_handler.send_response(200)
                 if path[2] is None :
                     path[0](request_handler, match)
                 else:
@@ -87,7 +88,6 @@ if __name__ == '__main__' :
 
     @api_handler.url('/(?P<path>.*)$')
     def handle_root(handler, match) :
-        handler.send_response(200)
         handler.send_headers()
         handler.wfile.write('<html><body><b>')
         handler.wfile.write(match.group('path'))
