@@ -60,7 +60,6 @@ class MyRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler) :
             self.process_404()
 
     def get_basic_headers(self) :
-        import email.utils
         return {
                 'Cache-Control' : 'no-cache',
                 #'Connection' : 'close',
